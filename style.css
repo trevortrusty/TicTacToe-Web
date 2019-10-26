@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway|Staatliches|Fjalla+One&display=swap');
+body {
+    background-color: rgb(2, 10, 20);
+}
+
+h1 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 40pt;
+    color: white;
+    text-align: center;
+    padding: 50px;
+}
+
+.grid {
+    /* position: absolute; */
+}
+
+td {
+    /* border: 5px solid white; */
+    height: 105px;
+    width: 108px;
+    font-family: 'RFjalla One', sans-serif;
+    text-emphasis: bold;
+    font-size: 60pt;
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+    transition-duration: 0.4s;
+}
+
+td:hover {
+    background-image: url("selector.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    /*source : http://getdrawings.com/selector-icon#selector-icon-71.png*/
+}
+
+#front {
+    position: absolute;
+    z-index: 0;
+    left: 38.5%;
+    top: 23%;
+}
+
+#grid-visual {
+    height: 353px;
+    width: 340px;
+}
+
+#back {
+    position: absolute;
+    z-index: 1;
+    left: 38.5%;
+    top: 26.5%;
+}
+
+.resultText {
+    position: absolute;
+    font-family: 'Raleway', sans-serif;
+    font-size: 20pt;
+    color: white;
+    text-align: center;
+    padding: 50px;
+    top: 70%;
+    left: 38%;
+}
