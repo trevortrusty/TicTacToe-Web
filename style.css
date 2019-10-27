@@ -36,7 +36,6 @@ td:hover {
     background-image: url("selectorSquare.png");
     background-repeat: no-repeat;
     background-position: center;
- 
     /* height: 40px;
     width: 40px;
     border: 4px solid green; */
@@ -46,8 +45,10 @@ td:hover {
 #front {
     position: absolute;
     z-index: 0;
-    left: 38.5%;
-    top: 23%;
+    left: 50%;
+    top: 50%;
+    margin-top: -176px;
+    margin-left: -170px;
 }
 
 #grid-visual {
@@ -58,8 +59,10 @@ td:hover {
 #back {
     position: absolute;
     z-index: 1;
-    left: 38.5%;
-    top: 26.5%;
+    left: 50%;
+    top: 50%;
+    margin-top: -150px;
+    margin-left: -170px;
 }
 
 .resultText {
@@ -70,5 +73,12 @@ td:hover {
     text-align: center;
     padding: 50px;
     top: 70%;
-    left: 38%;
+    /*left: 38%;*/
+    left: 50%;
+    margin-left: -180px;
 }
+
+
+/* @media only screen and (max-width: ) {
+
+} */
