@@ -1,6 +1,7 @@
 var counter = 0;
 var events = 0;
 var currentPlayer;
+var canPlay = true;
 
 // Caching grid table data
 var r1c1, r1c2, r1c3, r2c1, r2c2, r2c3, r3c1, r3c2, r3c3;
@@ -44,108 +45,120 @@ function checkWin(cpl) {
 }
 
 function placeLetter(place) {
-    if (counter % 2 === 0) {
-        currentPlayer = player1;
-    } else
-        currentPlayer = player2;
-
-    switch (place) {
-        case "r1c1":
-            if (r1c1 == -1) {
-                r1c1 = currentPlayer.mark;
-                r1c1_td.innerHTML = r1c1;
-                events++;
-            }
-            break;
-        case "r1c2":
-            if (r1c2 == -1) {
-                r1c2 = currentPlayer.mark;
-                r1c2_td.innerHTML = r1c2;
-                events++;
-            }
-
-            break;
-        case "r1c3":
-            if (r1c3 == -1) {
-                r1c3 = currentPlayer.mark;
-                r1c3_td.innerHTML = r1c3;
-                events++;
-            }
-
-            break;
-        case "r2c1":
-            if (r2c1 == -1) {
-                r2c1 = currentPlayer.mark;
-                r2c1_td.innerHTML = r2c1;
-                events++;
-            }
-
-            break;
-        case "r2c2":
-            if (r2c2 == -1) {
-                r2c2 = currentPlayer.mark;
-                r2c2_td.innerHTML = r2c2;
-                events++;
-            }
-
-            break;
-        case "r2c3":
-            if (r2c3 == -1) {
-                r2c3 = currentPlayer.mark;
-                r2c3_td.innerHTML = r2c3;
-                events++;
-            }
-
-            break;
-        case "r3c1":
-            if (r3c1 == -1) {
-                r3c1 = currentPlayer.mark;
-                r3c1_td.innerHTML = r3c1;
-                events++;
-            }
-
-            break;
-        case "r3c2":
-            if (r3c2 == -1) {
-                r3c2 = currentPlayer.mark;
-                r3c2_td.innerHTML = r3c2;
-                events++;
-            }
-
-            break;
-        case "r3c3":
-            if (r3c3 == -1) {
-                r3c3 = currentPlayer.mark;
-                r3c3_td.innerHTML = r3c3;
-                events++;
-            }
-
-            break;
-    }
-    let win = checkWin(currentPlayer);
-    if (events === 9 && !win) {
-        // alert("Cats Game! :(");
-        result_h2.innerHTML = "Cats Game :(";
-        reset();
-    } else if (win) {
+    if (canPlay) {
         if (counter % 2 === 0) {
-            result_h2.innerHTML = "Player X wins!!";
+            currentPlayer = player1;
         } else
-            result_h2.innerHTML = "Player O wins!!";
+            currentPlayer = player2;
 
-        reset();
-    } else {
-        counter++;
-        if (counter % 2 === 0) {
-            result_h2.innerHTML = "Player X\'s turn";
-        } else
-            result_h2.innerHTML = "Player O\'s turn";
+        switch (place) {
+            case "r1c1":
+                if (r1c1 == -1) {
+                    r1c1 = currentPlayer.mark;
+                    r1c1_td.innerHTML = r1c1;
+                    events++;
+                    counter++;
+                }
+                break;
+            case "r1c2":
+                if (r1c2 == -1) {
+                    r1c2 = currentPlayer.mark;
+                    r1c2_td.innerHTML = r1c2;
+                    events++;
+                    counter++;
+                }
+
+                break;
+            case "r1c3":
+                if (r1c3 == -1) {
+                    r1c3 = currentPlayer.mark;
+                    r1c3_td.innerHTML = r1c3;
+                    events++;
+                    counter++;
+                }
+
+                break;
+            case "r2c1":
+                if (r2c1 == -1) {
+                    r2c1 = currentPlayer.mark;
+                    r2c1_td.innerHTML = r2c1;
+                    events++;
+                    counter++;
+                }
+
+                break;
+            case "r2c2":
+                if (r2c2 == -1) {
+                    r2c2 = currentPlayer.mark;
+                    r2c2_td.innerHTML = r2c2;
+                    events++;
+                    counter++;
+                }
+
+                break;
+            case "r2c3":
+                if (r2c3 == -1) {
+                    r2c3 = currentPlayer.mark;
+                    r2c3_td.innerHTML = r2c3;
+                    events++;
+                    counter++;
+                }
+
+                break;
+            case "r3c1":
+                if (r3c1 == -1) {
+                    r3c1 = currentPlayer.mark;
+                    r3c1_td.innerHTML = r3c1;
+                    events++;
+                    counter++;
+                }
+
+                break;
+            case "r3c2":
+                if (r3c2 == -1) {
+                    r3c2 = currentPlayer.mark;
+                    r3c2_td.innerHTML = r3c2;
+                    events++;
+                    counter++;
+                }
+
+                break;
+            case "r3c3":
+                if (r3c3 == -1) {
+                    r3c3 = currentPlayer.mark;
+                    r3c3_td.innerHTML = r3c3;
+                    events++;
+                    counter++;
+                }
+
+                break;
+        }
+        let win = checkWin(currentPlayer);
+        if (events === 9 && !win) {
+            // alert("Cats Game! :(");
+            result_h2.innerHTML = "Cats Game :(";
+            reset();
+        } else if (win) {
+            counter--;
+            if (counter % 2 === 0) {
+                result_h2.innerHTML = "Player X wins!!";
+            } else
+                result_h2.innerHTML = "Player O wins!!";
+
+            reset();
+        } else {
+
+            if (counter % 2 === 0) {
+                result_h2.innerHTML = "Player X\'s turn";
+            } else
+                result_h2.innerHTML = "Player O\'s turn";
+        }
     }
-
 }
 
 
 function reset() {
+    canPlay = false;
     button.innerHTML = "Play again?";
     button.addEventListener('click', function() {
         r1c1_td.innerHTML = r1c2_td.innerHTML = r1c3_td.innerHTML = r2c1_td.innerHTML =
@@ -153,6 +166,7 @@ function reset() {
         r1c1 = r1c2 = r1c3 = r2c1 = r2c2 = r2c3 = r3c1 = r3c2 = r3c3 = -1;
         counter = events = 0;
         button.innerHTML = "";
+        canPlay = true;
         // main();
     })
 }
